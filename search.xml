@@ -4,6 +4,58 @@
   
     
     <entry>
+      <title>Nginx</title>
+      <link href="/2020/07/15/Nginx/"/>
+      <url>/2020/07/15/Nginx/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Nginx配置文件"><a href="#Nginx配置文件" class="headerlink" title="Nginx配置文件"></a>Nginx配置文件</h1><h4 id="user-local-nginx-conf-nginx-conf"><a href="#user-local-nginx-conf-nginx-conf" class="headerlink" title="/user/local/nginx/conf/nginx.conf"></a>/user/local/nginx/conf/nginx.conf</h4><p>​    Nginx服务器的基础篇日志</p><h4 id="文件结构"><a href="#文件结构" class="headerlink" title="文件结构"></a>文件结构</h4><p>​    全局块</p><p>​    events块</p><p>​    http块</p><p>​        嵌套多个server</p><p>​        配置反向代理功能提供负载均衡支持</p><p>​    server块</p><p>​            配置虚拟主机的相关参数  //虚拟主机表示tomcat这些服务器</p><p>​    location块</p><p>​            请求URL过滤，正则匹配</p><p><img src="D:%5C%E5%AD%A6%E4%B9%A0%5C%E8%AF%AD%E6%B3%95%E7%AC%94%E8%AE%B0%5C%E7%AC%94%E8%AE%B0%5CNginx%5Cimg%5Cimage-20200623095342856.png" alt="image-20200623095342856" loading="lazy"></p><p>worker_processes  1; //默认是1 启动进程通常和电脑的cpu相同</p><p>#error_log  logs/error.log;<br>#error_log  logs/error.log  notice;<br>#error_log  logs/error.log  info; //这里是全局的错误日志</p><p>#pid        logs/nginx.pid;//指定nginx进程运行文件存放的地址</p><p>events {   //这里是最大连接数<br>    worker_connections  1024;<br>}</p><p>http { //主要设置http服务器 利用反向功能实现负载均衡<br>    include       mime.types;     //默认的文件的扩展名和文件类型的映射表<br>    default_type  application/octet-stream;</p><pre><code>#log_format  main  &apos;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &apos;#                  &apos;$status $body_bytes_sent &quot;$http_referer&quot; &apos;#                  &apos;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&apos;;#access_log  logs/access.log  main;sendfile        on;#tcp_nopush     on;#keepalive_timeout  0;keepalive_timeout  65;#gzip  on;server {      //一个server代表一个虚拟主机    listen       80;  //监听端口 Nginx默认端口80    server_name  localhost;  //localhost写访问域名的位置    #charset koi8-r;    #access_log  logs/host.access.log  main;    location / {   // 反斜杠/表示根目录        root   html;           index  index.html index.htm;  //设置默认页    }    #error_page  404              /404.html;  //404跳转的页面    # redirect server error pages to the static page /50x.html    #    error_page   500 502 503 504  /50x.html;    location = /50x.html {        root   html;    }    # proxy the PHP scripts to Apache listening on 127.0.0.1:80    #    #location ~ \.php$ {    #    proxy_pass   http://127.0.0.1;    #}    # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000    #    #location ~ \.php$ {    #    root           html;    #    fastcgi_pass   127.0.0.1:9000;    #    fastcgi_index  index.php;    #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;    #    include        fastcgi_params;    #}    # deny access to .htaccess files, if Apache&apos;s document root    # concurs with nginx&apos;s one    #    #location ~ /\.ht {    #    deny  all;    #}}# another virtual host using mix of IP-, name-, and port-based configuration##server {#    listen       8000;#    listen       somename:8080;#    server_name  somename  alias  another.alias;#    location / {#        root   html;#        index  index.html index.htm;#    }#}# HTTPS server##server {#    listen       443 ssl;#    server_name  localhost;#    ssl_certificate      cert.pem;#    ssl_certificate_key  cert.key;#    ssl_session_cache    shared:SSL:1m;#    ssl_session_timeout  5m;#    ssl_ciphers  HIGH:!aNULL:!MD5;#    ssl_prefer_server_ciphers  on;#    location / {#        root   html;#        index  index.html index.htm;#    }#}</code></pre><p>}</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>maven私服</title>
+      <link href="/2020/07/15/maven%E7%A7%81%E6%9C%8D/"/>
+      <url>/2020/07/15/maven%E7%A7%81%E6%9C%8D/</url>
+      
+        <content type="html"><![CDATA[<p><a href="http://www.sonatype.org/nexus" target="_blank" rel="noopener">http://www.sonatype.org/nexus</a></p><p><img src="D:%5C%E5%AD%A6%E4%B9%A0%5C%E8%AF%AD%E6%B3%95%E7%AC%94%E8%AE%B0%5C%E7%AC%94%E8%AE%B0%5CMaven%E7%A7%81%E6%9C%8D%5Cimg%5Cimage-20200626155031019.png" alt="image-20200626155031019" loading="lazy"></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Liunx</title>
+      <link href="/2020/07/15/Liunx/"/>
+      <url>/2020/07/15/Liunx/</url>
+      
+        <content type="html"><![CDATA[<h1 id="终端指令"><a href="#终端指令" class="headerlink" title="终端指令"></a>终端指令</h1><p>su root</p><p>//root是超级管理员账号 su 是选择root登录</p><p><img src="D:%5C%E5%AD%A6%E4%B9%A0%5C%E8%AF%AD%E6%B3%95%E7%AC%94%E8%AE%B0%5C%E7%AC%94%E8%AE%B0%5CLiunx%5Cimg%5Cimage-20200623134554312.png" alt="image-20200623134554312" loading="lazy"></p><p>ifconfig </p><p>//查看网卡</p><p>ifconfig eth0 down</p><p>//关闭网卡 eth0是网卡名称 </p><p>ifconfig eth0 up</p><p>//开启网卡 eth0是网卡名称</p><p>dhclient eth0</p><p>//获取ip 给eth0自动获取ip</p><p><img src="D:%5C%E5%AD%A6%E4%B9%A0%5C%E8%AF%AD%E6%B3%95%E7%AC%94%E8%AE%B0%5C%E7%AC%94%E8%AE%B0%5CLiunx%5Cimg%5Cimage-20200623142250847.png" alt="image-20200623142250847" loading="lazy"></p><p>ping 192.168.43.96</p><p>//测试本机连接服务器 也就是测试能不能连到虚拟机</p><p>shutdown -r now</p><p>//重启系统的命令</p><p>ps -ef|grep sshd</p><p>//查看进程用的grep sshd表示查询模糊条件查询grep sshd的进程</p><p>kill -9 PID</p><p>//关闭进程用的PID表示要关闭进程的编号</p><p>service sshd start</p><p>//表示开启sshd start进程</p><p>service sshd stop</p><p>//表示停止sshd进程</p><p>service sshd restart</p><p>//也是表示停止sshd 进程</p><p>mkdir name</p><p>//makdir创建文件夹 name表示文件夹名称</p><p>pwd</p><p>//表示查看当前路径</p><p>cd name</p><p>//表示选择文件夹name表示文件夹名称</p><p>ls</p><p>//展示当前目录</p><p>cp name /dir</p><p>//cp表示复制 name表示文件名 /dir表示要粘贴的路径</p><p>mv name /dir</p><p>//mv表示剪切 name表示文件名 /dir表示要粘贴的路径cd </p><p>tar xvfz  name.tar.gz</p><p>//表示解压压缩包包 name.tar.gz表示压缩的tar包</p><p>vim name</p><p>//vim表示进入文件 name表示文件</p><p>vim /etc/sysconfig/iptables</p><p>//表示打开防火墙配置端口文件</p><p>chmod u+x  ./name</p><p>//表示改权限</p><p>service iptables restart</p><p>//表示重启防火墙配置文件</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop firewalld.service</span><br></pre></td></tr></table></figure><p>//表示关闭防火墙 重启后失效</p><p>gedit /etc/profile</p><p>//表示编辑环境变量</p><p>source /etc/profile</p><p>//使环境变量生效</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>博客hexo</title>
+      <link href="/2020/07/15/%E5%8D%9A%E5%AE%A2hexo/"/>
+      <url>/2020/07/15/%E5%8D%9A%E5%AE%A2hexo/</url>
+      
+        <content type="html"><![CDATA[<p>在blog 放博客的目录下打开git bash here界面输入</p><p>hexo s 可以启动博客 通过<a href="http://localhost:4000访问">http://localhost:4000访问</a></p><p>hexo g 把项目部署到本地git仓库</p><p>hexo d 把本地仓库的项目部署到github</p><p>Ctrl+c 关闭hexo服务</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>I have a goal</title>
       <link href="/2020/07/05/I%20have%20a%20goal/"/>
       <url>/2020/07/05/I%20have%20a%20goal/</url>
